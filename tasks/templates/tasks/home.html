@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+
+{%block styles%}
+    <style>
+
+        :root {
+        --bg-gradient: linear-gradient(135deg, #2e1e08 0%, #bba987 100%);
+        --border: rgba(255, 255, 255, 0.3);
+        --text-primary: #f8f9fa;
+        --accent: #948363;
+        --radius: 14px;
+        --transition-speed: 0.3s;
+        --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+        
+    .conteiner_home{
+        width: 100%;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2.5rem 2rem 2rem;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        animation: apierens 0.5s ease-out;
+    }
+
+    @keyframes apierens {
+        0% {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .link_to_login{
+        text-decoration: none;
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 1000px;
+        padding: 0.5rem 1.5rem;
+        transition: var(--transition-speed);
+    }
+
+    .link_to_login:hover{
+        background-color: var(--accent);
+    }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="conteiner_home">
+        <h1>Добро пожаловать на сайт 𝓷𝓸𝓭𝓮</h1>
+
+        <p>на этом сайте вы можете создавать свои записи</p>
+
+        <a href="{% url 'users-login'%}" class="link_to_login">перейти к входу в аккаунт</a>
+    </div>
+
+
+{% endblock %}

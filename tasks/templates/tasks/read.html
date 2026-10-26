@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block styles%}
+    <style>
+
+    :root {
+        --bg-gradient: linear-gradient(135deg, #2e1e08 0%, #bba987 100%);
+        --border: rgba(255, 255, 255, 0.3);
+        --text-primary: #f8f9fa;
+        --accent: #948363;
+        --radius: 14px;
+        --transition-speed: 0.3s;
+        --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+
+    .conteiner_read{
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        justify-content: space-around;
+    }
+
+
+    .delete_button, .update_button{
+        width: 120%;
+        height: 3rem;
+        background-color: var(--color);
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: 0.5s;
+        height: 10vh;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+
+
+    .delete_button{
+        color: #8f3434;
+    }
+    .delete_button:hover{
+        color: #be3434;
+    }
+    .delete_button:hover, .update_button:hover{
+        transform: translateY(-4px);
+        background-color: var(--accent);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
+    }
+
+    .back{
+        font-weight: 500;
+        font-size: 16px;
+        padding: 0.75rem 1.25rem;
+        border-radius: var(--radius);
+        transition: var(--transition-speed) ease;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        color: var(--text-primary);
+    }
+
+    .back::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        width: 0;
+        background: var(--accent);
+        height: 2px;
+        transition: width var(--transition-speed) ease, left var(--transition-speed) ease;
+    }
+    .back:hover::after {
+        width: 100%;
+        left: 0;
+    }
+
+    @media (max-width: 450px){
+        .conteiner_read{
+            flex-direction: column;
+        }
+    }
+
+        
+    </style>
+
+{% endblock %}
+
+{% block content%}
+    <a href="{% url 'list-tasks' %}" class="back"><--назад ко всем постам</a>
+
+    <article>
+            <h2>
+                {{task.title}}
+            </h2>
+
+            <p>
+                {{task.text}}
+            </p>
+
+
+            <small> 
+                пост создан: {{task.created}}  <br> обновлен: {{task.updated}}
+            </small>
+
+            <div class="conteiner_read">
+
+                <form method="get" action="{% url 'update-task' task_id=task.pk %}">
+                    {% csrf_token %}
+                    <button type="submit"  class="update_button">Изменить запись</button>
+                </form>
+
+                <form method="get" action="{% url 'delete-task' task_id=task.pk %}">
+                    {% csrf_token %}
+                    <button type="submit"  class="delete_button">Удалить запись</button>
+                </form>
+                
+            </div>
+
+            
+        </article>
+
+{% endblock %}
+

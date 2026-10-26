@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block styles%}
+
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #2e1e08 0%, #bba987 100%);
+            --border: rgba(255, 255, 255, 0.3);
+            --text-primary: #f8f9fa;
+            --accent: #948363;
+            --radius: 14px;
+            --transition-speed: 0.3s;
+            --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .about_h4, .about_p{
+            font-size: 20px;
+            margin: 15px;
+        }
+
+    </style>
+{% endblock%}
+
+
+{% block content%}
+
+
+    <h4 class="about_h4">
+        Этот сайт создавался как уютный цифровой блокнот, где нет ничего лишнего — только вы и ваши идеи. 
+        В мире, перенасыщенном шумом и бесконечными уведомлениями, мы часто теряем ценные инсайты, 
+        мимолетные вдохновения или просто важные списки дел.
+    </h4>
+
+    <p class="about_p">
+        Этот проект — тихая гавань для вашего разума. Мы верим, 
+        что каждая записанная мысль — это шаг к порядку в голове и гармонии в жизни. 
+    </p>
+{% endblock %}
