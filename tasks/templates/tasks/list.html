@@ -105,18 +105,27 @@
 
 <main>
     {% for task in tasks %}
-        <a href="{% url 'read-task' task.id %}" class="card">
-            <article class="conteiner_list">
+        <a href="{% url 'read-task' task.id %}" class="card" id="conteiner_list">
+            <article class="conteiner_list" >
                 <h2>
                     <p class="title">{{ task.title }}</p>
                 </h2>
-                <div class="s"></div>   
+                <button id="myButton"> нажми</button>
             </article>
         </a>
     {% empty %}
         <h1 class="empty">Задач пока нет</h1>
     {% endfor %}
 </main>
+
+
+<script>
+    document.getElementById('myButton').addEventListener('click', function() {
+
+    document.getElementById('conteiner_list').style.backgroundColor = 'red';
+    
+    });
+</script>
 
 {% endblock %}
 
